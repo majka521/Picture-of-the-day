@@ -36,7 +36,7 @@ export const App = () => {
   return (
     <>
       <main className="mainBox">
-        <h1 className="mainBox__title">Picure of the day:</h1>
+        <h1 className="mainBox__title">Picture of the day:</h1>
         <div className="mainBox__imageBox">
           <img src={require(`./data/data(${number}).jpg`)} alt="cat" className="mainBox__imageBox__image"></img>
         </div>
