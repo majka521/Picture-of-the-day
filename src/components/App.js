@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export const App = () => {
-  //set first time date and picture at local storage
-  localStorage.setItem("date", new Date().toLocaleDateString());
+  //set first time picture at local storage
   if (localStorage.getItem("pictureOfTheDay") === null) {
     localStorage.setItem("pictureOfTheDay", Math.floor(Math.random() * (35 - 1 + 1) + 1));
   }
@@ -10,10 +9,14 @@ export const App = () => {
   //states
   const [pictureOfTheDay, setPictureOfTheDay] = useState(localStorage.getItem("pictureOfTheDay"));
   const [number, setNumber] = useState(pictureOfTheDay);
+  const [date, setDate] = useState(new Date().toLocaleDateString());
+
+  //set date at local storage
+  localStorage.setItem("date", date);
 
   //random picture of the day
   useEffect(() => {
-    if (localStorage.getItem("date") !== new Date().toLocaleDateString()) {
+    if (date !== new Date().toLocaleDateString()) {
       const temp = [+pictureOfTheDay];
       while (temp.length < 2) {
         let randomNumber = Math.floor(Math.random() * (35 - 1 + 1) + 1);
@@ -24,8 +27,9 @@ export const App = () => {
       localStorage.setItem("pictureOfTheDay", temp[1]);
       setPictureOfTheDay(temp[1]);
       setNumber(temp[1]);
+      setDate(new Date().toLocaleDateString());
     }
-  }, [pictureOfTheDay]);
+  }, [pictureOfTheDay, date]);
 
   //random picture button
   const handleClick = (e) => {
