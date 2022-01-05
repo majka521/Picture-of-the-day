@@ -12,9 +12,9 @@ export const App = () => {
 
   //random picture of the day
   useEffect(() => {
-const oldDate = window.localStorage.getItem('date');
-    cont currentDate = new Date().toLocatDateString();
-    
+    const oldDate = window.localStorage.getItem("date");
+    const currentDate = new Date().toLocaleDateString();
+
     if (oldDate !== currentDate) {
       const temp = [+pictureOfTheDay];
       while (temp.length < 2) {
@@ -26,8 +26,7 @@ const oldDate = window.localStorage.getItem('date');
       localStorage.setItem("pictureOfTheDay", temp[1]);
       setPictureOfTheDay(temp[1]);
       setNumber(temp[1]);
-      window.locatStorage.setItem('date', currentDate)
-      consle.log("działa");
+      window.localStorage.setItem("date", currentDate);
     }
   }, []);
 
